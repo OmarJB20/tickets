@@ -1,0 +1,63 @@
+<h2>Lista de Clientes</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Nombre</th>
+      <th>Usuario</th>
+      <th>Email</th>
+      <th>Celular</th>
+      <th>Dirección</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.cedulaCliente }}</td>
+      <td>{{ cliente.nombreCliente }}</td>
+      <td>{{ cliente.usernameCliente }}</td>
+      <td>{{ cliente.emailCliente || '—' }}</td>
+      <td>{{ cliente.telefonoCliente || '—' }}</td>
+      <td>{{ cliente.direccionCliente || '—' }}</td>
+      <td>{{ cliente.stadoCliente }}</td>
+
+      <td>
+        <button (click)="abrirModalEditar(cliente)">Editar</button>
+        <button (click)="eliminarCliente(cliente.idClientes)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- MODAL EDITAR CLIENTE -->
+<div *ngIf="mostrarModal" class="modal-backdrop">
+  <div class="modal">
+    <h3>Editar Cliente</h3>
+
+    <form (ngSubmit)="guardarEdicion()">
+      <input type="text" [(ngModel)]="clienteEditando.cedulaCliente" name="cedulaCliente" placeholder="Cédula"
+        required />
+
+      <input type="text" [(ngModel)]="clienteEditando.nombreCliente" name="nombreCliente" placeholder="Nombre"
+        required />
+
+      <input type="text" [(ngModel)]="clienteEditando.usernameCliente" name="usernameCliente" placeholder="Usuario"
+        required />
+
+      <input type="email" [(ngModel)]="clienteEditando.emailCliente" name="emailCliente" placeholder="Email" />
+
+      <input type="text" [(ngModel)]="clienteEditando.telefonoCliente" name="telefonoCliente" placeholder="Celular" />
+
+      <input type="text" [(ngModel)]="clienteEditando.direccionCliente" name="direccionCliente"
+        placeholder="Dirección" />
+
+      <div class="acciones">
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

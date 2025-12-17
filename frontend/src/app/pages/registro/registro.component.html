@@ -1,0 +1,40 @@
+<h2>Registro de Usuario</h2>
+
+<form (ngSubmit)="registrar()" #form="ngForm">
+  <div>
+    <label>Cédula:</label>
+    <input type="text" [(ngModel)]="cliente.cedulaCliente" name="cedulaCliente" required />
+  </div>
+
+  <div>
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="cliente.nombreCliente" name="nombreCliente" required />
+  </div>
+
+  <div>
+    <label>Usuario:</label>
+    <input type="text" [(ngModel)]="cliente.usernameCliente" name="usernameCliente" required />
+  </div>
+
+  <div>
+    <label>Contraseña:</label>
+    <input type="password" [(ngModel)]="cliente.passwordCliente" name="passwordCliente" required />
+  </div>
+
+  <div>
+    <label>Correo (Gmail):</label>
+    <input type="email" [(ngModel)]="cliente.correoCliente" name="correoCliente" required />
+  </div>
+
+  <div>
+    <label>Celular:</label>
+    <input type="text" [(ngModel)]="cliente.celularCliente" name="celularCliente" required />
+  </div>
+
+  <div>
+    <label>Dirección:</label>
+    <input type="text" [(ngModel)]="cliente.direccionCliente" name="direccionCliente" required />
+  </div>
+
+  <button type="submit">Registrarse</button>
+</form>
